@@ -1,4 +1,4 @@
-# Caso 01 — Lentidão e alta carga no Zabbix Server
+# Caso 01 - Lentidão e alta carga no Zabbix Server
 
 **Categoria:** Performance · Banco de dados · Processos internos  
 **Ambiente:** Zabbix 7.x · MySQL / MariaDB  
@@ -82,7 +82,7 @@ history syncer processes N% busy
 
 ## Ações corretivas
 
-### Prioridade 1 — Escalar processos saturados
+### Prioridade 1 - Escalar processos saturados
 
 Edite `/etc/zabbix/zabbix_server.conf`:
 
@@ -100,7 +100,7 @@ Reinicie após alterar:
 systemctl restart zabbix-server
 ```
 
-### Prioridade 2 — Otimizar banco de dados
+### Prioridade 2 - Otimizar banco de dados
 
 ```sql
 -- Atualizar estatísticas das tabelas principais
@@ -114,7 +114,7 @@ ORDER BY data_length DESC
 LIMIT 10;
 ```
 
-### Prioridade 3 — Ajustar Housekeeper
+### Prioridade 3 - Ajustar Housekeeper
 
 No Zabbix web: **Administration → Housekeeping**
 
@@ -122,7 +122,7 @@ No Zabbix web: **Administration → Housekeeping**
 - Ativar "Enable internal housekeeping" para history e trends
 - Considerar uso de **Zabbix TimescaleDB** para ambientes grandes
 
-### Prioridade 4 — Ajustar InnoDB
+### Prioridade 4 - Ajustar InnoDB
 
 Em `/etc/mysql/mariadb.conf.d/50-server.cnf` (ou equivalente):
 
@@ -147,5 +147,5 @@ watch -n 30 "grep 'utilization' /var/log/zabbix/zabbix_server.log | tail -10"
 
 ## Referências
 
-- [Zabbix 7 — Performance Tuning](https://www.zabbix.com/documentation/7.0/en/manual/appendix/performance_tuning)
-- [Zabbix 7 — Server Configuration](https://www.zabbix.com/documentation/7.0/en/manual/appendix/config/zabbix_server)
+- [Zabbix 7 - Performance Tuning](https://www.zabbix.com/documentation/7.0/en/manual/appendix/performance_tuning)
+- [Zabbix 7 - Server Configuration](https://www.zabbix.com/documentation/7.0/en/manual/appendix/config/zabbix_server)
