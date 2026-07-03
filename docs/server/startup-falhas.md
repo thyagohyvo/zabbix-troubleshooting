@@ -1,4 +1,4 @@
-# Caso 03 — Zabbix Server não inicia ou reinicia sozinho
+# Caso 03 - Zabbix Server não inicia ou reinicia sozinho
 
 **Categoria:** Startup · Banco de dados · Configuração  
 **Ambiente:** Zabbix 7.x · MySQL / MariaDB  
@@ -82,7 +82,7 @@ server #0 started [main process]
 
 ## Ações corretivas
 
-### Prioridade 1 — Erro de banco de dados
+### Prioridade 1 - Erro de banco de dados
 
 Verifique e corrija as credenciais em `/etc/zabbix/zabbix_server.conf`:
 
@@ -109,7 +109,7 @@ systemctl enable mysql
 tail -50 /var/log/mysql/error.log
 ```
 
-### Prioridade 2 — Schema version mismatch (pós-upgrade)
+### Prioridade 2 - Schema version mismatch (pós-upgrade)
 
 Ocorre quando o Zabbix é atualizado mas o banco não foi migrado:
 
@@ -125,10 +125,10 @@ mysql -u zabbix -p zabbix < /usr/share/zabbix-sql-scripts/mysql/upgrade.sql
 ls /usr/share/zabbix/sql/mysql/
 ```
 
-### Prioridade 3 — Espaço em disco
+### Prioridade 3 - Espaço em disco
 
 ```bash
-# Se /var estiver cheio — limpar logs antigos do Zabbix
+# Se /var estiver cheio - limpar logs antigos do Zabbix
 find /var/log/zabbix/ -name "*.log.*" -mtime +7 -delete
 
 # Rotacionar o log atual
@@ -139,7 +139,7 @@ systemctl restart zabbix-server
 journalctl --vacuum-time=7d
 ```
 
-### Prioridade 4 — Problema de permissão
+### Prioridade 4 - Problema de permissão
 
 ```bash
 # Corrigir dono dos diretórios
@@ -151,7 +151,7 @@ chown -R zabbix:zabbix /var/lib/zabbix/
 id zabbix
 ```
 
-### Prioridade 5 — Erro de configuração
+### Prioridade 5 - Erro de configuração
 
 ```bash
 # Validar o arquivo de configuração
@@ -190,5 +190,5 @@ ps aux | grep zabbix_server
 
 ## Referências
 
-- [Zabbix 7 — Server Configuration File](https://www.zabbix.com/documentation/7.0/en/manual/appendix/config/zabbix_server)
-- [Zabbix 7 — Upgrade Procedure](https://www.zabbix.com/documentation/7.0/en/manual/installation/upgrade)
+- [Zabbix 7 - Server Configuration File](https://www.zabbix.com/documentation/7.0/en/manual/appendix/config/zabbix_server)
+- [Zabbix 7 - Upgrade Procedure](https://www.zabbix.com/documentation/7.0/en/manual/installation/upgrade)
