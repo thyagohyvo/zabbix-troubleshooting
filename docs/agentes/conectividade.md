@@ -1,4 +1,4 @@
-# Caso 02 — Problemas de conectividade com agentes
+# Caso 02 - Problemas de conectividade com agentes
 
 **Categoria:** Rede · Zabbix Agent · Active vs Passive  
 **Ambiente:** Zabbix 7.x · Zabbix Agent 2  
@@ -79,7 +79,7 @@ cannot send list of active checks
 
 ## Ações corretivas
 
-### Prioridade 1 — Verificar firewall
+### Prioridade 1 - Verificar firewall
 
 ```bash
 # No servidor Zabbix (deve conseguir alcançar o agente)
@@ -95,7 +95,7 @@ firewall-cmd --add-port=10051/tcp --permanent
 firewall-cmd --reload
 ```
 
-### Prioridade 2 — Verificar configuração do agente
+### Prioridade 2 - Verificar configuração do agente
 
 Arquivo: `/etc/zabbix/zabbix_agent2.conf`
 
@@ -113,7 +113,7 @@ Hostname=nome-do-host-no-zabbix
 
 > ⚠️ O campo `Hostname` no agente deve ser **exatamente igual** ao nome do host cadastrado na interface web do Zabbix.
 
-### Prioridade 3 — Problemas de TLS/PSK
+### Prioridade 3 - Problemas de TLS/PSK
 
 ```bash
 # Verificar configuração de PSK no agente
@@ -128,7 +128,7 @@ No Zabbix web: **Configuration → Hosts → [host] → Encryption**
 - PSK Identity deve ser idêntica ao parâmetro `TLSPSKIdentity` do agente
 - O conteúdo da chave PSK deve ser idêntico em ambos os lados
 
-### Prioridade 4 — Reiniciar e verificar
+### Prioridade 4 - Reiniciar e verificar
 
 ```bash
 systemctl restart zabbix-agent2
@@ -166,5 +166,5 @@ grep "<IP_DO_HOST>" /var/log/zabbix/zabbix_server.log | tail -10
 
 ## Referências
 
-- [Zabbix 7 — Agent 2 Configuration](https://www.zabbix.com/documentation/7.0/en/manual/appendix/config/zabbix_agent2)
-- [Zabbix 7 — Encryption](https://www.zabbix.com/documentation/7.0/en/manual/encryption)
+- [Zabbix 7 - Agent 2 Configuration](https://www.zabbix.com/documentation/7.0/en/manual/appendix/config/zabbix_agent2)
+- [Zabbix 7 - Encryption](https://www.zabbix.com/documentation/7.0/en/manual/encryption)
