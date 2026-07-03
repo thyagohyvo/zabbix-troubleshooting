@@ -63,4 +63,4 @@ Encontrou um novo problema? Abra uma [Issue](../../issues/new/choose) usando o t
 
 ---
 
-> Mantido pelo time de infraestrutura. Atualizado continuamente conforme novos casos são identificados.
+> Mantido por Thyago hyvo, responsável pela infraestrutura Zabbix. Atualizado continuamente conforme novos casos são identificados.
